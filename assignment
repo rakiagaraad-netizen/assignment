@@ -1,0 +1,30 @@
+public class Book {
+    String title;
+    String auther;
+    int year;
+
+
+    Book(String title, String auther, int year) {
+        this.title = title;
+        this.auther = auther;
+        this.year = year;
+
+    }
+
+
+    void dispalayBook() {
+        System.out.println("Title:" + title);
+        System.out.println("aucther:" + auther);
+        System.out.println("year:" + year);
+
+    }
+
+    public static void main(String[] args){
+        Book books1= new Book("isdeeri oo isdhowr","natasha abdi",2023) ;
+        Book books2= new Book("hooyo mcn","abuubakar",2024);
+
+        books1.dispalayBook();
+        books2.dispalayBook();
+
+    }
+}

@@ -1,0 +1,43 @@
+public class students {
+    private String name;
+    private int age;
+    private double gpa; //[cite: 1]
+
+    public students(String name, int age, double gpa) { //[cite: 1]
+        this.name = name; //[cite: 1]
+        setAge(age);      // reuse the validation, don't assign directly[cite: 1]
+        setGpa(gpa);      //[cite: 1]
+    } //[cite: 1]
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age; // controlled read[cite: 1]
+    } //[cite: 1]
+
+    public void setAge(int age) { // controlled write[cite: 1]
+        if (age > 0) {
+            this.age = age; //[cite: 1]
+        } else {
+            System.out.println("Rejected: age must be positive (" + age + ")"); //[cite: 1]
+        }
+    } //[cite: 1]
+
+    public double getGpa() {
+        return gpa;
+    }
+
+    public void setGpa(double gpa) { //[cite: 1]
+        if (gpa >= 0.0 && gpa <= 4.0) {
+            this.gpa = gpa; //[cite: 1]
+        } else {
+            System.out.println("Rejected: GPA must be 0.0-4.0 (" + gpa + ")"); //[cite: 1]
+        }
+    } //[cite: 1]
+}
