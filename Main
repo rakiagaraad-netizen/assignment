@@ -1,0 +1,89 @@
+import java.util.Stack;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 1. Tijaabada Stack-ka koowaad
+        Stack<Integer> s1 = new Stack<Integer>();
+        s1.push(10);
+        s1.push(20);
+        s1.push(30);
+        System.out.println("Original Stack: " + s1.toString());
+
+        int top = s1.peek();
+        System.out.println("top element: " + top);
+        System.out.println("Stack after accessing top element: " + s1);
+
+        int out = s1.pop();
+        System.out.println("Removed element: " + out);
+        System.out.println("Stack after Pop Operation: " + s1);
+
+        // 2. Tijaabada Reverser-ka (String Reversing)
+        Scanner inputObject = new Scanner(System.in);
+        System.out.println("Enter String to Reverse: ");
+        String input = inputObject.nextLine();
+        Reverser test = new Reverser();
+        String result = test.reverse(input);
+        System.out.println("Reversed String: " + result);
+    }
+}
+
+class bankAccount {
+    private double balance;
+    private Stack<Double> history = new Stack<>();
+
+    public bankAccount(double balance) {
+        this.balance = balance;
+    }
+
+    public void deposit(double amount) {
+        balance = balance + amount;
+        history.push(amount);          // remember it[cite: 3]
+        System.out.println("Deposit " + amount + " -> balance " + balance);
+    }
+
+    public void undoLastDeposit() {
+        if (history.isEmpty()) {
+            System.out.println("Nothing to undo");
+            return;
+        }
+        double last = history.pop();   // most recent deposit[cite: 3]
+        balance = balance - last;      // Halkan waa la saxay oo waa hal xariiq oo sax ah[cite: 3]
+        System.out.println("Undo " + last + " -> balance " + balance);
+    }
+}
+
+class Registration {
+    private String studentName;
+    private Stack<String> courses = new Stack<>();
+
+    public Registration(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public void addCourse(String code) {
+        courses.push(code);
+        System.out.println("Added " + code + " -> " + courses);
+    }
+
+    public void undoLastCourse() {
+        if (courses.isEmpty()) {
+            System.out.println("Nothing to undo");
+            return;
+        }
+        String removed = courses.pop();
+        System.out.println("Removed " + removed + " -> " + courses);
+    }
+}
+
+class Reverser {
+    public String reverse(String input) {
+        Stack<Character> stack = new Stack<>();
+        for(int i = 0; i < input.length(); i++)
+            stack.push(input.charAt(i));
+        String reversed = "";
+        while (!stack.isEmpty())
+            reversed += stack.pop();
+        return reversed;
+    }
+}
